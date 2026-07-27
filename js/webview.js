@@ -1072,13 +1072,6 @@ const viewEvents = async () => {
 
   // Handle events per webview
   WEBVIEW.views.forEach((view, i) => {
-    // Enable webview touch emulation
-    view.webContents.debugger.attach("1.1");
-    view.webContents.debugger.sendCommand("Emulation.setEmitTouchEventsForMouse", {
-      configuration: "mobile",
-      enabled: true,
-    });
-
     // Redirect webview hyperlinks
     view.webContents.setWindowOpenHandler(({ url }) => {
       view.webContents.loadURL(url);
